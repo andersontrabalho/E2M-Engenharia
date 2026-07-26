@@ -1099,9 +1099,70 @@ footer {
   margin-bottom: 0.25rem;
 }
 
+.whatsapp-float {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 54px;
+  height: 54px;
+  background: #25D366;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  z-index: 150;
+  transition: transform 0.2s;
+}
+
+.whatsapp-float svg { width: 28px; height: 28px; }
+
+.whatsapp-float:hover { transform: scale(1.08); }
+
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  animation: wa-pulse 2.4s infinite;
+}
+
+@keyframes wa-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float { right: 1rem; bottom: 1rem; width: 48px; height: 48px; }
+  .whatsapp-float svg { width: 24px; height: 24px; }
+}
+
 @media print {
-  nav, footer, .cv-page__actions { display: none; }
-  .cv-document { box-shadow: none; padding: 0; }
+  nav, footer, .cv-page__actions, .whatsapp-float { display: none; }
+
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body { background: #fff; }
+
+  .cv-page {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .cv-document {
+    box-shadow: none;
+    padding: 0;
+    font-size: 10.5pt;
+  }
+
+  .cv-document h2 { break-after: avoid; page-break-after: avoid; }
+  .cv-document .cv-job { break-inside: avoid; page-break-inside: avoid; }
+
+  @page { margin: 1.5cm; }
 }
 
 /* PROJECT MODAL */
