@@ -1,0 +1,6 @@
+Place project images here:
+
+- cover.jpg  (main thumbnail — 1600px wide recommended)
+- 01.jpg, 02.jpg, 03.jpg ... (gallery images)
+
+Supported formats: JPG, PNG, WebP
